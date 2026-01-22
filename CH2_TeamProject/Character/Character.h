@@ -34,9 +34,6 @@ public:
 	int getDef() { return Def; }
 	int getCri() { return Critcal; }
 
-
-
-
     void setHP(int hp);
     bool IsDead() { return Hp <= 0;}
     int getRandomInt();
