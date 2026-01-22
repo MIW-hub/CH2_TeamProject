@@ -34,9 +34,7 @@ int ACharacter::getRandomInt()
 
     return dis(gen);
 }
-void AMonster::Attack(ACharacter* Target)
-{
-}
+
 void ACharacter::TakeDamage(int DamageAmount)
 {
     int FinalDamege = DamageAmount - Def;
@@ -67,15 +65,13 @@ void ACharacter::Attack(ACharacter* Target)
     cout << Name << "가 공격합니다!" << Atk << endl;
 }
 
-bool ACharacter::IsDead()
+
+void AMonster::Attack(ACharacter* Target)
 {
-    if (Hp > 0) {
-
-        cout << "Your Dead" << endl;
-        return false;
-    }
 }
-
+void AMonster::TakeDamage(int DamageAmount)
+{
+}
 
 
 

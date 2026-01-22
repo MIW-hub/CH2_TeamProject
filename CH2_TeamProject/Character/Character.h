@@ -12,7 +12,7 @@ class ACharacter
 public:
     ACharacter(string M_name, int M_Hp, int M_Atk, int M_Def, int M_Critcal);
     
-    ~ACharacter();
+    virtual ~ACharacter();
 
    
 protected:
@@ -21,7 +21,8 @@ protected:
     int Atk;
     int Def;
     int Critcal;
-  
+    bool m_Alive;
+
 public:
     
     virtual void Attack(ACharacter* Target);

@@ -1,24 +1,25 @@
 ﻿#pragma once
 #include <iostream>
 #include <string> // 문자열(이름)을 쓰기 위해 필요합니다.
-
+#include "Character/Character.h"
 
 using namespace std;
-class ACharacter;
+
 class AMonster : public ACharacter
 {
 public:
 	
-	AMonster(string M_name, int M_Hp, int M_Atk, int M_Def, int M_Critcal) : ACharacter(M_name, M_Hp, M_Atk, M_Def, M_Critcal) {}
+	AMonster(const string& M_name, int M_Hp, int M_Atk, int M_Def, int M_Critcal);
+	virtual ~AMonster() override;
 	
-	~AMonster();
+	
 protected:
 	string Name;
 	int Hp;
 	int Atk;
 	int Def;
 	int Critcal;
-
+	bool m_Alive;
 
 public:
 	string getName() { return Name; }
