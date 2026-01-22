@@ -21,3 +21,22 @@ AMonster::~AMonster()
 {
 	cout << "ACharacter 소멸됨" << endl;
 }
+void AMonster::Attack(ACharacter* Target)
+{
+    if (Target == nullptr) return;
+
+    int Damage = Atk - Target->getDef();
+    if (Damage < 1) Damage = 1;
+
+    std::cout << Name << " 이(가) 공격합니다!\n";
+    Target->TakeDamage(Damage);
+}
+
+void AMonster::TakeDamage(int DamageAmount)
+{
+    Hp -= DamageAmount;
+    if (Hp < 0) Hp = 0;
+
+    std::cout << Name << " 이(가) " << DamageAmount
+        << " 피해를 입음. 남은 HP: " << Hp << "\n";
+}

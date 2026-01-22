@@ -35,24 +35,6 @@ int ACharacter::getRandomInt()
     return dis(gen);
 }
 
-void ACharacter::TakeDamage(int DamageAmount)
-{
-    int FinalDamege = DamageAmount - Def;
-    if (FinalDamege < 0) 
-    {
-        DamageAmount = 0;
-    }
-    else {
-        if (getRandomInt() < 10) {
-            Hp -= FinalDamege * 1.5;
-        }
-        else {
-            Hp -= FinalDamege;
-        }
-    }
-    cout << Name << "가 " << DamageAmount << "의 피해를 입었습니다." << endl;
-}
-
 void ACharacter::setHP(int hp)
 {
     this->Hp = hp;
@@ -65,13 +47,24 @@ void ACharacter::Attack(ACharacter* Target)
     cout << Name << "가 공격합니다!" << Atk << endl;
 }
 
+void ACharacter::TakeDamage(int DamageAmount)
+{
+    int FinalDamege = DamageAmount - getDef();
+    if (FinalDamege < 0) 
+    {
+        DamageAmount = 0;
+    }
+    else {
+        if (getRandomInt() < 50) {
+            Hp -= FinalDamege * 1.5;
+        }
+        else {
+            Hp -= FinalDamege;
+        }
+    }
+    cout << Name << "가 " << DamageAmount << "의 피해를 입었습니다." << endl;
+}
 
-void AMonster::Attack(ACharacter* Target)
-{
-}
-void AMonster::TakeDamage(int DamageAmount)
-{
-}
 
 
 
