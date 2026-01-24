@@ -5,15 +5,16 @@
 
 using namespace std;
 
+// 몬스터는 있지만 플레이어 클래스가 없네요.
 class AMonster : public ACharacter
 {
 public:
-	
 	AMonster(const string& M_name, int M_Hp, int M_Atk, int M_Def, int M_Critcal);
 	virtual ~AMonster() override;
 	
 	
 protected:
+	//이미 부모에서 정의된 멤버 변수가 있네요. 몬스터에 재정의한 이유는?
 	string Name;
 	int Hp;
 	int Atk;

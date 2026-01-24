@@ -4,7 +4,7 @@
 
 using namespace std;
 
-
+//빈 줄은 적당히 제거
 
 
 ACharacter::ACharacter(string M_name, int M_Hp, int M_Atk, int M_Def, int M_Critcal)
@@ -49,18 +49,24 @@ void ACharacter::Attack(ACharacter* Target)
 
 void ACharacter::TakeDamage(int DamageAmount)
 {
+    //오타 수정 필요
     int FinalDamege = DamageAmount - getDef();
     if (FinalDamege < 0) 
     {
+        //Final Damage를 0으로 만들어야겠죠?...
         DamageAmount = 0;
     }
-    else {
+    else { // 여기만 중괄호 라인 넘기기?
+        //크리티컬 스탯을 사용해야 합니다.
         if (getRandomInt() < 50) {
+            //파이널 데미지를 우선 수정하세요.
             Hp -= FinalDamege * 1.5;
         }
         else {
             Hp -= FinalDamege;
         }
+        
+        //그다음 if else 밖에서 finaldamage를 빼주면 됩니다.
     }
     cout << Name << "가 " << DamageAmount << "의 피해를 입었습니다." << endl;
 }
