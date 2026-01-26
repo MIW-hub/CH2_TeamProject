@@ -7,6 +7,7 @@ using namespace std;
 
 class ACharacter;
 // 몬스터는 있지만 플레이어 클래스가 없네요.
+class ACharacter;
 class AMonster : public ACharacter
 {
 public:

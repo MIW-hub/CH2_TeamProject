@@ -30,17 +30,17 @@ protected:
    
 
 public:
-    virtual void Attack(ACharacter* Target);
-    virtual void TakeDamage(int DamageAmount);
+	virtual void Attack(ACharacter* Target);
+	virtual void TakeDamage(int DamageAmount);
 	//코딩 스타일 통일. 응용반 문서 참고하세요.
-	string getName(){return Name; }
-	int getHp(){return Stat.Hp;}
-	int getAtk(){return Stat.Atk;}
-	int getDef(){return Stat.Def;}
-	int getCri(){return Stat.Critical;}
-int getRandomInt();
-    void setHP(int hp);
-    bool IsDead() { return Stat.Hp <= 0;}
+	string getName() { return Name; }
+	int getHp() { return Stat.Hp; }
+	int getAtk() { return Stat.Atk; }
+	int getDef() { return Stat.Def; }
+	int getCri() { return Stat.Critical; }
+	int getRandomInt();
+	void setHP(int hp);
+	bool IsDead() { return Stat.Hp <= 0; }
 	//이 함수는 private로
 private:
     
