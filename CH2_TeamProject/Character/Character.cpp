@@ -14,6 +14,8 @@ ACharacter::ACharacter(string M_name, int M_Hp, int M_Atk, int M_Def, int M_Crit
 	Atk = M_Atk;
 	Def = M_Def;
 	Critcal = M_Critcal;
+
+    cout << "[생성] " << Name << "가 전장에 나타났습니다! (HP: " << Hp << ")" << endl;
 }
 
 
