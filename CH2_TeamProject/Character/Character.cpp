@@ -1,4 +1,4 @@
-﻿// 파일명: Character.cpp
+// 파일명: Character.cpp
 #include "Character.h"
 #include "../Monster.h"
 
