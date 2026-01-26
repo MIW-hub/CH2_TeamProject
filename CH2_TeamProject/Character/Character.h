@@ -8,40 +8,41 @@
 using namespace std;
 
 class AMonster;
+struct FUnitStat
+{
+    int Hp;
+    int Atk;
+    int Def;
+    int Critical;
+};
 class ACharacter
 {
 public:
-	//M_ 접두사는 옛날 스타일, 멤버 변수에서 한정되서 쓰고 파라미터에서도 잘 쓰지 않습니다.
-	//변수 이름이 겹칠시 this-> 로 멤버 변수를 구분하면 됩니다.
-    ACharacter(string M_name, int M_Hp, int M_Atk, int M_Def, int M_Critcal);
+	
+    ACharacter(string NewName, const FUnitStat& NewStat);
     
     virtual ~ACharacter();
 
    
 protected:
-    string Name;
-    int Hp;
-    int Atk;
-    int Def;
-    int Critcal; // 오타 수정
-	
-	// 왜 여기만 m_?... 당장 사용하지 않는 변수는 제거합시다. 
-    bool m_Alive;
+    string Name;  
+    FUnitStat Stat;
+   
 
 public:
     virtual void Attack(ACharacter* Target);
     virtual void TakeDamage(int DamageAmount);
-    
 	//코딩 스타일 통일. 응용반 문서 참고하세요.
-	string getName() { return Name; }
-	int getHp() { return Hp; }
-	int getAtk() { return Atk; }
-	int getDef() { return Def; }
-	int getCri() { return Critcal; }
-
+	string getName(){return Name; }
+	int getHp(){return Stat.Hp;}
+	int getAtk(){return Stat.Atk;}
+	int getDef(){return Stat.Def;}
+	int getCri(){return Stat.Critical;}
+int getRandomInt();
     void setHP(int hp);
-    bool IsDead() { return Hp <= 0;}
+    bool IsDead() { return Stat.Hp <= 0;}
 	//이 함수는 private로
-    int getRandomInt();
+private:
+    
 
 };

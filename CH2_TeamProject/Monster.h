@@ -5,33 +5,28 @@
 
 using namespace std;
 
+class ACharacter;
 // 몬스터는 있지만 플레이어 클래스가 없네요.
 class AMonster : public ACharacter
 {
 public:
-	AMonster(const string& M_name, int M_Hp, int M_Atk, int M_Def, int M_Critcal);
+	AMonster(string name ,const FUnitStat& NewStat);
 	virtual ~AMonster() override;
 	
 	
 protected:
 	//이미 부모에서 정의된 멤버 변수가 있네요. 몬스터에 재정의한 이유는?
-	string Name;
-	int Hp;
-	int Atk;
-	int Def;
-	int Critcal;
-	bool m_Alive;
+	ACharacter* Character;
 
 public:
 	string getName() { return Name; }
-	int getHp() { return Hp; }
-	int getAtk() { return Atk; }
-	int getDef() { return Def; }
-	int getCri() { return Critcal; }
+	int getHp() { return Stat.Hp; }
+	int getAtk() { return Stat.Atk; }
+	int getDef() { return Stat.Def; }
+	int getCri() { return Stat.Critical; }
 
 	void setHP(int hp);
-	bool IsDead() { return Hp <= 0; }
-	int getRandomInt();
+	bool IsDead() { return Stat.Hp <= 0; }
 	virtual void Attack(ACharacter* Target) override;
 	virtual void TakeDamage(int DamageAmount) override;
 	

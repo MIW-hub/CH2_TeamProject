@@ -5,17 +5,11 @@
 using namespace std;
 
 
-
-
-AMonster::AMonster(const string& M_name, int M_Hp, int M_Atk, int M_Def, int M_Critcal)
-    : ACharacter(M_name, M_Hp, M_Atk, M_Def, M_Critcal)
+AMonster::AMonster(string NewName, const FUnitStat& NewStat)
+    : ACharacter(NewName,NewStat)
 {
-    Name = M_name;
-    Hp = M_Hp;
-    Atk = M_Atk;
-    Def = M_Def;
-    Critcal = M_Critcal;
 }
+
 
 AMonster::~AMonster()
 {
@@ -23,20 +17,22 @@ AMonster::~AMonster()
 }
 void AMonster::Attack(ACharacter* Target)
 {
+   
     if (Target == nullptr) return;
+    Target->TakeDamage(Stat.Atk);
 
-    int Damage = Atk - Target->getDef();
-    if (Damage < 1) Damage = 1;
-
-    std::cout << Name << " 이(가) 공격합니다!\n";
-    Target->TakeDamage(Damage);
+    std::cout << Target->getName() << " 이(가) 공격합니다!\n";
 }
 
 void AMonster::TakeDamage(int DamageAmount)
 {
-    Hp -= DamageAmount;
-    if (Hp < 0) Hp = 0;
-
-    std::cout << Name << " 이(가) " << DamageAmount
-        << " 피해를 입음. 남은 HP: " << Hp << "\n";
+    int FinalDamege = DamageAmount - getDef();
+    if (FinalDamege <= 0) FinalDamege = 0;
+    if (getRandomInt() < Stat.Critical) {
+        FinalDamege *= 1.5f;
+        cout << "치명적인 피해를 입혔습니다." << endl;
+    }
+    Stat.Hp -= FinalDamege;
+    std::cout << Name << " 이(가) " << FinalDamege
+        << " 피해를 입음. 남은 HP: " << Stat.Hp << "\n";
 }

@@ -9,8 +9,11 @@
 using namespace std;
 int main()
 {
-    ACharacter* Player = new ACharacter("나의 용사", 200, 15 , 5, 10);
-    AMonster* Monster = new AMonster("무서운 오크", 100, 10, 0, 10);
+    FUnitStat PlayerStat = { 200,16,5,70 };
+    FUnitStat MonsterStat = { 100, 16, 0, 70 };
+
+    ACharacter* Player = new ACharacter("나의 용사", PlayerStat);
+    AMonster* Monster = new AMonster("무서운 오크", MonsterStat);
 
     cout << "[생성] " << Player->getName() << "가 전장에 나타났습니다! (HP: " << Player->getHp() << ")" << endl;
     cout << "[생성] " << Monster->getName() << "가 전장에 나타났습니다! (HP: " << Monster->getHp() << ")" << endl;
