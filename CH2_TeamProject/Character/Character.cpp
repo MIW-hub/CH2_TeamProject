@@ -13,7 +13,7 @@ ACharacter::ACharacter(const string& NewName, const FUnitStat& NewStat)
 
 ACharacter::~ACharacter()
 {
-	cout << "ACharacter 소멸됨" << endl;
+	cout << Name << " 소멸됨" << endl;
 }
 
 int ACharacter::GetRandomInt()
@@ -31,6 +31,7 @@ void ACharacter::Attack(ACharacter* Target)
 	if (GetRandomInt() <= Stat.Critical)
 	{
 		Damage = static_cast<int>(Damage * 1.5f);
+			cout << " 치명타 발생!" << endl;
 	}
 	
 	Target->TakeDamage(Damage);	

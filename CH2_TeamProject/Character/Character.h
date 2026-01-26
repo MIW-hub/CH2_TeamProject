@@ -28,6 +28,9 @@ public:
 	
 	const string& GetName() { return Name; }
 	int GetHp() { return Stat.Hp; }
+	int GetAtk() { return Stat.Atk; }
+	int GetDef() { return Stat.Def; }
+	int GetCri() { return Stat.Critical; }
 	bool IsDead() { return Stat.Hp <= 0; }
 	
 protected:

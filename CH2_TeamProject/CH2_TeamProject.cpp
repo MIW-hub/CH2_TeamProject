@@ -6,6 +6,7 @@
 #include <Windows.h>
 #include "Character/Character.h"
 #include "Character/Monster.h"
+#include "Character/Player.h"
 
 using namespace std;
 int main()
@@ -13,11 +14,12 @@ int main()
     FUnitStat PlayerStat = { 200,16,5,70 };
     FUnitStat MonsterStat = { 100, 16, 0, 70 };
 
-    ACharacter* Player = new ACharacter("나의 용사", PlayerStat);
+    APlayer* Player = new APlayer("나의 용사", PlayerStat);
     AMonster* Monster = new AMonster("무서운 오크", MonsterStat);
 
     cout << "[생성] " << Player->GetName() << "가 전장에 나타났습니다! (HP: " << Player->GetHp() << ")" << endl;
-    cout << "[생성] " << Monster->GetName() << "가 전장에 나타났습니다! (HP: " << Monster->GetName() << ")" << endl;
+    Player->Status(Player);
+    cout << "[생성] " << Monster->GetName() << "가 전장에 나타났습니다! (HP: " << Monster->GetHp() << ")" << endl;
 
     cout << "===  데스매치 시작!  ===" << endl;
     Sleep(1000);
