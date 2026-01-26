@@ -2,9 +2,10 @@
 //
 
 // 파일명: Main.cpp
-#include "Character/Character.h"
-#include "Monster.h"
+#include <iostream>
 #include <Windows.h>
+#include "Character/Character.h"
+#include "Character/Monster.h"
 
 using namespace std;
 int main()
@@ -15,8 +16,8 @@ int main()
     ACharacter* Player = new ACharacter("나의 용사", PlayerStat);
     AMonster* Monster = new AMonster("무서운 오크", MonsterStat);
 
-    cout << "[생성] " << Player->getName() << "가 전장에 나타났습니다! (HP: " << Player->getHp() << ")" << endl;
-    cout << "[생성] " << Monster->getName() << "가 전장에 나타났습니다! (HP: " << Monster->getHp() << ")" << endl;
+    cout << "[생성] " << Player->GetName() << "가 전장에 나타났습니다! (HP: " << Player->GetHp() << ")" << endl;
+    cout << "[생성] " << Monster->GetName() << "가 전장에 나타났습니다! (HP: " << Monster->GetName() << ")" << endl;
 
     cout << "===  데스매치 시작!  ===" << endl;
     Sleep(1000);
