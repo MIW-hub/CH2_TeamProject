@@ -13,7 +13,7 @@ class ACharacter
 public:
 	//M_ 접두사는 옛날 스타일, 멤버 변수에서 한정되서 쓰고 파라미터에서도 잘 쓰지 않습니다.
 	//변수 이름이 겹칠시 this-> 로 멤버 변수를 구분하면 됩니다.
-    ACharacter(string M_name, int M_Hp, int M_Atk, int M_Def, int M_Critcal);
+    ACharacter(string name, int Hp, int Atk, int Def, int Critcal);
     
     virtual ~ACharacter();
 
@@ -24,9 +24,7 @@ protected:
     int Atk;
     int Def;
     int Critcal; // 오타 수정
-	
-	// 왜 여기만 m_?... 당장 사용하지 않는 변수는 제거합시다. 
-    bool m_Alive;
+    
 
 public:
     virtual void Attack(ACharacter* Target);
@@ -42,6 +40,7 @@ public:
     void setHP(int hp);
     bool IsDead() { return Hp <= 0;}
 	//이 함수는 private로
+private:
     int getRandomInt();
 
 };
