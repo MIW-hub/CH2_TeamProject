@@ -9,6 +9,7 @@
 #include "Character/Player.h"
 
 using namespace std;
+
 int main()
 {
     FUnitStat PlayerStat = { 200,16,5,70 };
@@ -18,7 +19,7 @@ int main()
     AMonster* Monster = new AMonster("무서운 오크", MonsterStat);
 
     cout << "[생성] " << Player->GetName() << "가 전장에 나타났습니다! (HP: " << Player->GetHp() << ")" << endl;
-    Player->Status(Player);
+    Player->LogStatus(Player);
     cout << "[생성] " << Monster->GetName() << "가 전장에 나타났습니다! (HP: " << Monster->GetHp() << ")" << endl;
 
     cout << "===  데스매치 시작!  ===" << endl;
