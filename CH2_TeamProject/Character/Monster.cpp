@@ -11,7 +11,6 @@ AMonster::AMonster(const string& NewName, const FUnitStat& NewStat)
 
 FDamageSet AMonster::Attack(ACharacter* Target)
 {
-	
 	FDamageSet Result = ACharacter::Attack(Target);
 	string DamageText = "물어 뜯었습니다.";
 	if (Result.BCritcal)
@@ -21,5 +20,6 @@ FDamageSet AMonster::Attack(ACharacter* Target)
 
 	cout << Name << DamageText << "대미지 :  " << Result.FDamage << endl;
 	cout << Name << "가 " << Result.FDamage << "의 피해를 입었습니다." << endl;
+	cout << Target->GetName() << "의 HP:  " << Target->GetHp() << endl;
 	return Result;
 }

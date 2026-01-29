@@ -34,8 +34,6 @@ public:
 	virtual FDamageSet Attack(ACharacter* Target);
 	virtual int TakeDamage(int DamageAmount);
 
-	
-	
 	const string& GetName() { return Name; }
 	int GetHp() { return Stat.Hp; }
 	int GetAtk() { return Stat.Atk; }

@@ -13,7 +13,7 @@ using namespace std;
 int main()
 {
     FUnitStat PlayerStat = { 200,16,5,40 };
-    FUnitStat MonsterStat = { 100, 16, 0, 40 };
+    FUnitStat MonsterStat = { 100, 16, 2, 40 };
 
     ACharacter* Player = new APlayer("나의 용사", PlayerStat);
     ACharacter* Monster = new AMonster("무서운 오크", MonsterStat);

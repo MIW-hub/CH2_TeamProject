@@ -29,16 +29,16 @@ FDamageSet ACharacter::Attack(ACharacter* Target)
 	
 	 FDamageSet DamageSet;
 	
-	 DamageSet.FDamage = Stat.Atk;
+	 int Damage = Stat.Atk;
 	 DamageSet.BCritcal = GetRandomInt() <= Stat.Critical;
 
 	if (DamageSet.BCritcal)
 	{	
-		DamageSet.FDamage = static_cast<int>(DamageSet.FDamage * 1.5f);		
-		
+		Damage = static_cast<int>(Damage * 1.5f);
 	}
-	
-	Target->TakeDamage(DamageSet.FDamage);
+
+	int FinalDamage = Target->TakeDamage(Damage);
+	DamageSet.FDamage = FinalDamage;
 	
 
 	return DamageSet;	

@@ -46,5 +46,6 @@ FDamageSet APlayer::Attack(ACharacter* target)
 
 	cout << Name << DamageText << "대미지 :  " <<Result.FDamage << endl;
 	cout << Name << "가 " << Result.FDamage << "의 피해를 입었습니다." << endl;
+	cout << target->GetName() << "의 HP:  " << target->GetHp()<< endl;
 	return Result;
 }
