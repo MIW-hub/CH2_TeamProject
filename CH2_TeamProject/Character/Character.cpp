@@ -9,6 +9,9 @@ ACharacter::ACharacter(const string& NewName, const FUnitStat& NewStat)
 {
 	Name = NewName;
 	Stat = NewStat;
+	Stat.Hp = Stat.MaxHp;
+	Stat.Mp = Stat.MaxMp;
+
 }
 
 ACharacter::~ACharacter()
