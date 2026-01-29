@@ -15,11 +15,11 @@ int main()
     FUnitStat PlayerStat = { 200,16,5,70 };
     FUnitStat MonsterStat = { 100, 16, 0, 70 };
 
-    APlayer* Player = new APlayer("나의 용사", PlayerStat);
-    AMonster* Monster = new AMonster("무서운 오크", MonsterStat);
+    ACharacter* Player = new APlayer("나의 용사", PlayerStat);
+    ACharacter* Monster = new AMonster("무서운 오크", MonsterStat);
 
     cout << "[생성] " << Player->GetName() << "가 전장에 나타났습니다! (HP: " << Player->GetHp() << ")" << endl;
-    Player->LogStatus(Player);
+   /* Player->LogStatus(Player);*/ // 사용시 Player로 수정
     cout << "[생성] " << Monster->GetName() << "가 전장에 나타났습니다! (HP: " << Monster->GetHp() << ")" << endl;
 
     cout << "===  데스매치 시작!  ===" << endl;

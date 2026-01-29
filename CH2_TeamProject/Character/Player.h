@@ -14,7 +14,7 @@ protected:
 	int Exp;
 
 public:
-	void LogStatus(ACharacter* player);
+	/*void LogStatus(ACharacter* player);*/
 	void LevelUp();
 	void UseItem();
 };

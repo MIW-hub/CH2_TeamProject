@@ -11,16 +11,16 @@ APlayer::APlayer(const string& NewName, FUnitStat& NewStat)
 	Exp = 0;
 }
 
-void APlayer::LogStatus(ACharacter* player)
-{
-	cout << " 이름 : " << player->GetName()
-		<< " 레벨 : " << Level
-		<< " 경험치 : " << Exp
-		<< " 공격력 : " << player->GetAtk()
-		<< " 방어력 : " << player->GetDef()
-		<< " 치명타 : " << player->GetCri()
-		<< "% " << endl;
-}
+//void APlayer::LogStatus(ACharacter* player)
+//{
+//	cout << " 이름 : " << player->GetName()
+//		<< " 레벨 : " << Level
+//		<< " 경험치 : " << Exp
+//		<< " 공격력 : " << player->GetAtk()
+//		<< " 방어력 : " << player->GetDef()
+//		<< " 치명타 : " << player->GetCri()
+//		<< "% " << endl;
+//}
 
 void APlayer::LevelUp()
 {
