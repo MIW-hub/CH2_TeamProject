@@ -12,9 +12,10 @@ public:
 protected:
 	int Level;
 	int Exp;
-
+	
 public:
 	/*void LogStatus(ACharacter* player);*/
 	void LevelUp();
 	void UseItem();
+	void Attack(ACharacter* target) override;
 };

@@ -34,3 +34,9 @@ void APlayer::LevelUp()
 void APlayer::UseItem()
 {
 }
+
+void APlayer::Attack(ACharacter* target)
+{
+	ACharacter::Attack(target);
+	cout << Name << "가 공격합니다!" << Stat.Atk << endl;
+}

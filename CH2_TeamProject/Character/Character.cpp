@@ -35,7 +35,7 @@ void ACharacter::Attack(ACharacter* Target)
 	}
 	
 	Target->TakeDamage(Damage);	
-	cout << Name << "가 공격합니다!" << Stat.Atk << endl;
+	
 }
 
 void ACharacter::TakeDamage(int DamageAmount)
