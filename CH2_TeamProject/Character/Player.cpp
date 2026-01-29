@@ -35,8 +35,16 @@ void APlayer::UseItem()
 {
 }
 
-void APlayer::Attack(ACharacter* target)
+FDamageSet APlayer::Attack(ACharacter* target)
 {
-	ACharacter::Attack(target);
-	cout << Name << "가 공격합니다!" << Stat.Atk << endl;
+	FDamageSet Result = ACharacter::Attack(target);
+	string DamageText = "가 공격합니다!";
+	if (Result.BCritcal)
+	{
+		DamageText = "가 치명적인 공격합니다!";
+	}
+
+	cout << Name << DamageText << "대미지 :  " <<Result.FDamage << endl;
+	cout << Name << "가 " << Result.FDamage << "의 피해를 입었습니다." << endl;
+	return Result;
 }

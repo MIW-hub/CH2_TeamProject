@@ -11,6 +11,12 @@ struct FUnitStat
     int Def;
     int Critical;
 };
+struct FDamageSet
+{
+	int FDamage; 
+	bool BCritcal = false;
+
+};
 
 class ACharacter
 {
@@ -20,15 +26,16 @@ public:
    
 protected:
     string Name;  
-    FUnitStat Stat;
+    FUnitStat Stat;	
+private:
 	
 
 public:
-	virtual void Attack(ACharacter* Target);
-	virtual void TakeDamage(int DamageAmount);
+	virtual FDamageSet Attack(ACharacter* Target);
+	virtual int TakeDamage(int DamageAmount);
 
 	
-
+	
 	const string& GetName() { return Name; }
 	int GetHp() { return Stat.Hp; }
 	int GetAtk() { return Stat.Atk; }

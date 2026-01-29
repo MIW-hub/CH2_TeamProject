@@ -24,25 +24,32 @@ int ACharacter::GetRandomInt()
 	return dis(gen);
 }
 
-void ACharacter::Attack(ACharacter* Target)
+FDamageSet ACharacter::Attack(ACharacter* Target)
 {
-	int Damage = Stat.Atk;
 	
-	if (GetRandomInt() <= Stat.Critical)
-	{
-		Damage = static_cast<int>(Damage * 1.5f);
-			cout << " 치명타 발생!" << endl;
+	 FDamageSet DamageSet;
+	
+	 DamageSet.FDamage = Stat.Atk;
+	 DamageSet.BCritcal = GetRandomInt() <= Stat.Critical;
+
+	if (DamageSet.BCritcal)
+	{	
+		DamageSet.FDamage = static_cast<int>(DamageSet.FDamage * 1.5f);		
+		
 	}
 	
-	Target->TakeDamage(Damage);	
+	Target->TakeDamage(DamageSet.FDamage);
 	
+
+	return DamageSet;	
 }
 
-void ACharacter::TakeDamage(int DamageAmount)
+int ACharacter::TakeDamage(int DamageAmount)
 {
 	int FinalDamage = DamageAmount - Stat.Def;
 	FinalDamage = std::max(FinalDamage, 0);
 	
 	Stat.Hp -= FinalDamage;
-	cout << Name << "가 " << FinalDamage << "의 피해를 입었습니다." << endl;
+
+	return FinalDamage;
 }
