@@ -9,17 +9,43 @@ AMonster::AMonster(const string& NewName, const FUnitStat& NewStat)
 {
 }
 
-FDamageSet AMonster::Attack(ACharacter* Target)
+FDamageResult AMonster::Attack(ACharacter* Target)
 {
-	FDamageSet Result = ACharacter::Attack(Target);
-	string DamageText = "물어 뜯었습니다.";
+	FDamageResult Result = ACharacter::Attack(Target);
+	
+	DamageText = " 물어 뜯었습니다.";
 	if (Result.BCritcal)
 	{
-		DamageText = "치명적인 먹방을 했습니다.";
+		DamageText = " 이 치명적인 먹방을 했습니다.";
 	}
 
-	cout << Name << DamageText << "대미지 :  " << Result.FDamage << endl;
-	cout << Name << "가 " << Result.FDamage << "의 피해를 입었습니다." << endl;
-	cout << Target->GetName() << "의 HP:  " << Target->GetHp() << endl;
+	
+	Result.PrintMessage(DamageText);
+
 	return Result;
+}
+void AMonster::UseSkill(ACharacter* Target)
+{
+	
+	if (Stat.Mp < 10) {
+		cout << "MP가 부족합니다." << endl;
+		return;
+	}	
+	int Damage = Stat.Atk;
+	int FinalDamage = Target->TakeDamage(Damage);
+
+	Stat.Mp -= 10;
+	
+	DamageText = " 흡혈(Vampire)! ";
+	
+
+	FDamageResult Result;
+
+	Result.FDamage = FinalDamage;
+	Result.Attacker = this;
+	Result.Target = Target;
+	Result.BCritcal = false;
+
+	Result.PrintMessage(DamageText);
+	Heal(FinalDamage);
 }

@@ -27,24 +27,27 @@ int ACharacter::GetRandomInt()
 	return dis(gen);
 }
 
-FDamageSet ACharacter::Attack(ACharacter* Target)
+FDamageResult ACharacter::Attack(ACharacter* Target)
 {
-	
-	 FDamageSet DamageSet;
-	
-	 int Damage = Stat.Atk;
-	 DamageSet.BCritcal = GetRandomInt() <= Stat.Critical;
 
-	if (DamageSet.BCritcal)
-	{	
+	int Damage = Stat.Atk;
+	bool BCritcal = GetRandomInt() <= Stat.Critical;
+
+	if (BCritcal)
+	{
 		Damage = static_cast<int>(Damage * 1.5f);
 	}
 
 	int FinalDamage = Target->TakeDamage(Damage);
-	DamageSet.FDamage = FinalDamage;
 	
+	FDamageResult Result;
 
-	return DamageSet;	
+	Result.FDamage = FinalDamage;
+	Result.Attacker = this;
+	Result.Target = Target;
+	Result.BCritcal = BCritcal;
+
+	return Result;
 }
 
 int ACharacter::TakeDamage(int DamageAmount)
@@ -55,4 +58,32 @@ int ACharacter::TakeDamage(int DamageAmount)
 	Stat.Hp -= FinalDamage;
 
 	return FinalDamage;
+}
+void ACharacter::Heal(int amount)
+{
+	int PrevHp = Stat.Hp;
+	Stat.Hp += amount;
+	Stat.Hp = std::min(Stat.MaxHp, Stat.Hp);
+
+	int ActualHeal = Stat.Hp - PrevHp;
+
+	PrintName();
+	cout << ActualHeal << " HP를 회복했습니다...!" << endl;
+}
+
+void ACharacter::PrintName()
+{
+	cout << "[" << Name << "] ";
+}
+
+void FDamageResult::PrintMessage(const string& AttackMessage)
+{
+	
+	cout << "-------------------------------------------------" << endl;
+	Attacker->PrintName();
+	cout << AttackMessage << '\n';
+
+	Target->PrintName();
+	cout << "'받은 데미지': " << FDamage << " -> '남은 HP': " << Target->GetHp() << "/" << Target->GetMaxHp() << endl;
+	cout << "-------------------------------------------------" << endl;
 }

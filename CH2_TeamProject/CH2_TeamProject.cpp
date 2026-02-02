@@ -12,9 +12,9 @@ using namespace std;
 
 int main()
 {
-    FUnitStat PlayerStat = { 200,50,16,5,40 };
-    FUnitStat MonsterStat = { 100,50, 16, 2, 40 };
-
+    FUnitStat PlayerStat = { 200,200,16,5,40 };
+    FUnitStat MonsterStat = { 100 ,200, 16, 2, 40 };
+    
     ACharacter* Player = new APlayer("나의 용사", PlayerStat);
     ACharacter* Monster = new AMonster("무서운 오크", MonsterStat);
 
@@ -28,6 +28,9 @@ int main()
     while (!Player->IsDead() && !Monster->IsDead())
     {
         Player->Attack(Monster);
+        Monster->UseSkill(Player);
+        
+        cout << "" << endl;
         if (Monster->IsDead())
         {
             cout << "몬스터가 쓰러졌습니다! 승리!" << endl;
@@ -36,6 +39,9 @@ int main()
 
         Sleep(500);
         Monster->Attack(Player);
+        Player->UseSkill(Monster);
+        
+        cout << "" << endl;
         if (Player->IsDead())
         {
             cout << "플레이어가 쓰러졌습니다... 패배..." << endl;

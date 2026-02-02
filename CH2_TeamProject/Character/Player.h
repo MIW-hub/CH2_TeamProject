@@ -15,7 +15,9 @@ protected:
 	
 public:
 	/*void LogStatus(ACharacter* player);*/
+	string DamageText;
 	void LevelUp();
 	void UseItem();
-	FDamageSet Attack(ACharacter* target) override;
+	FDamageResult Attack(ACharacter* target) override;
+	void UseSkill(ACharacter* Target);
 };
