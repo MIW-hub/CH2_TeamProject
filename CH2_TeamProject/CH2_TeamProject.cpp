@@ -10,10 +10,17 @@
 
 using namespace std;
 
+
+void  WaitForPlayerInput() {
+    system("pause");
+    cout << endl;
+}
+
+
 int main()
 {
-    FUnitStat PlayerStat = { 200,200,16,5,40 };
-    FUnitStat MonsterStat = { 100 ,200, 16, 2, 40 };
+    FUnitStat PlayerStat = { 200,50,16,5,40 };
+    FUnitStat MonsterStat = { 100 ,0, 16, 2, 40 };
     
     ACharacter* Player = new APlayer("나의 용사", PlayerStat);
     ACharacter* Monster = new AMonster("무서운 오크", MonsterStat);
@@ -27,31 +34,31 @@ int main()
 
     while (!Player->IsDead() && !Monster->IsDead())
     {
-        Player->Attack(Monster);
-        Monster->UseSkill(Player);
-        
+        //플레이어 공격
+        Player->DoAction(Monster);
         cout << "" << endl;
         if (Monster->IsDead())
         {
             cout << "몬스터가 쓰러졌습니다! 승리!" << endl;
             break;
         }
+        WaitForPlayerInput();
 
-        Sleep(500);
-        Monster->Attack(Player);
-        Player->UseSkill(Monster);
-        
+        //몬스터 공격
+        Monster->DoAction(Player);
         cout << "" << endl;
         if (Player->IsDead())
         {
             cout << "플레이어가 쓰러졌습니다... 패배..." << endl;
             break;
         }
-
-        Sleep(1000);
+        WaitForPlayerInput();
+        
     }
 
     delete Player;
     delete Monster;
+
+    WaitForPlayerInput();
     return 0;
 }

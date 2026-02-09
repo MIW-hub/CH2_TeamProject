@@ -51,6 +51,8 @@ public:
 protected:
     string Name;  
     FUnitStat Stat;	
+
+	
 	
 private:
 	
@@ -60,6 +62,7 @@ public:
 	virtual FDamageResult Attack(ACharacter* Target);
 	virtual int TakeDamage(int DamageAmount);
 	virtual void UseSkill(ACharacter* Target) = 0;
+	void DoAction(ACharacter* Target);
 
 	const string& GetName() { return Name; }
 	int GetHp() { return Stat.Hp; }
@@ -71,6 +74,7 @@ public:
 	void Heal(int amount);
 	void PrintName();
 	int GetMaxHp() const { return Stat.MaxHp; }
+	int GetMaxMp() const { return Stat.MaxMp; }
 protected:
 	int GetRandomInt();
 

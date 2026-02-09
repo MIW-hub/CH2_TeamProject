@@ -59,6 +59,28 @@ int ACharacter::TakeDamage(int DamageAmount)
 
 	return FinalDamage;
 }
+
+
+void ACharacter::DoAction(ACharacter* Target)
+{
+	const int AttackRate = 70;
+	const int SkillMp = 10;
+	bool BSkill = GetRandomInt() <= AttackRate;
+
+	if (BSkill) 
+	{
+		if (Stat.Mp > SkillMp) {
+			UseSkill(Target);
+		}
+		else {
+			cout << "스킬을 사용할 Mp가 없습니다." << endl;
+			Attack(Target);
+		}
+	}
+	else {
+		Attack(Target);
+	}
+}
 void ACharacter::Heal(int amount)
 {
 	int PrevHp = Stat.Hp;
@@ -84,6 +106,7 @@ void FDamageResult::PrintMessage(const string& AttackMessage)
 	cout << AttackMessage << '\n';
 
 	Target->PrintName();
-	cout << "'받은 데미지': " << FDamage << " -> '남은 HP': " << Target->GetHp() << "/" << Target->GetMaxHp() << endl;
+	cout << "'받은 데미지': " << FDamage << " -> '남은 HP': " << Target->GetHp() << "/" << Target->GetMaxHp() 
+		<< " -> '남은 MP': " << Target->GetMp() << "/" << Target->GetMaxMp() << endl;
 	cout << "-------------------------------------------------" << endl;
 }

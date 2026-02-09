@@ -63,12 +63,12 @@ void APlayer::UseSkill(ACharacter* Target)
 	}
 
 
-	
+	Stat.Mp -= 10;
 	int Damage = Stat.Atk * 2.0f;
 	int FinalDamage = Target->TakeDamage(Damage);
-	Stat.Mp -= 10;
-	/*cout << Name << "의 MP:  " << Stat.Mp << endl;
-	cout << "회심의 일격!" << endl;*/
+	
+	/*cout << Name << "의 MP:  " << Stat.Mp << endl;*/
+	DamageText= "뚝베기 사냥 !";
 	FDamageResult Result;
 
 	Result.FDamage = FinalDamage;

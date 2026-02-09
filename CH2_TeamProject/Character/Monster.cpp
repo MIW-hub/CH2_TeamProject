@@ -31,10 +31,11 @@ void AMonster::UseSkill(ACharacter* Target)
 		cout << "MP가 부족합니다." << endl;
 		return;
 	}	
+	Stat.Mp -= 10;
 	int Damage = Stat.Atk;
 	int FinalDamage = Target->TakeDamage(Damage);
 
-	Stat.Mp -= 10;
+
 	
 	DamageText = " 흡혈(Vampire)! ";
 	
