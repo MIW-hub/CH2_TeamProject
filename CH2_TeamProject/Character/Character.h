@@ -62,7 +62,9 @@ public:
 	virtual FDamageResult Attack(ACharacter* Target);
 	virtual int TakeDamage(int DamageAmount);
 	virtual void UseSkill(ACharacter* Target) = 0;
-	void DoAction(ACharacter* Target);
+	void PlayerTurn(ACharacter* Target);
+	void ShowStat();
+
 
 	const string& GetName() { return Name; }
 	int GetHp() { return Stat.Hp; }

@@ -57,30 +57,30 @@ int ACharacter::TakeDamage(int DamageAmount)
 	
 	Stat.Hp -= FinalDamage;
 
+	if (Stat.Hp < FinalDamage) {
+		Stat.Hp = 0;
+	}
 	return FinalDamage;
 }
 
 
-void ACharacter::DoAction(ACharacter* Target)
+void ACharacter::PlayerTurn(ACharacter* Target)
 {
-	const int AttackRate = 70;
-	const int SkillMp = 10;
-	bool BSkill = GetRandomInt() <= AttackRate;
-
-	if (BSkill) 
-	{
-		if (Stat.Mp > SkillMp) {
-			UseSkill(Target);
-		}
-		else {
-			cout << "스킬을 사용할 Mp가 없습니다." << endl;
-			Attack(Target);
-		}
-	}
-	else {
+	if (GetRandomInt() < 50) {
 		Attack(Target);
 	}
+	else {
+		UseSkill(Target);
+	}
 }
+
+void ACharacter::ShowStat()
+{
+	cout << "[" << Name << "]" << " HP: " << GetHp()
+		<< "/" << GetMaxHp() << " |" << " MP:" << GetMp()
+		<< "/" << GetMaxMp() << endl;
+}
+
 void ACharacter::Heal(int amount)
 {
 	int PrevHp = Stat.Hp;
