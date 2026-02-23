@@ -1,5 +1,6 @@
 ﻿#include "Monster.h"
 #include "Character.h"
+#include "../SKill/UMonsterDrainSkill.h"
 #include <iostream>
 using namespace std;
 
@@ -32,6 +33,7 @@ void AMonster::UseSkill(ACharacter* Target)
 		return;
 	}	
 	Stat.Mp -= 10;
+
 	int Damage = Stat.Atk;
 	int FinalDamage = Target->TakeDamage(Damage);
 

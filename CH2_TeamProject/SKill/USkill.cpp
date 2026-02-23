@@ -3,5 +3,5 @@
 
 USkill::USkill(ACharacter* Owner)
 {
-	this->Owner = Owner;
+	this->Owner = Owner; 
 }

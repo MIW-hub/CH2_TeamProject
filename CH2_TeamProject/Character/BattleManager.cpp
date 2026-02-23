@@ -1,5 +1,5 @@
 ﻿#include "BattleManager.h"
-#include "Character/Character.h"
+#include "Character.h"
 #include <iostream>
 using namespace std;
 

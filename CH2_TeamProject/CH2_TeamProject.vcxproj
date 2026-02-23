@@ -123,7 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BattleManager.cpp" />
+    <ClCompile Include="Character\BattleManager.cpp" />
     <ClCompile Include="CH2_TeamProject.cpp" />
     <ClCompile Include="Character\Character.cpp" />
     <ClCompile Include="Character\Monster.cpp">
@@ -278,12 +278,26 @@
       <SDLCheck>true</SDLCheck>
       <LinkCompiled>true</LinkCompiled>
     </ClCompile>
+    <ClCompile Include="SKill\USkill.cpp" />
+    <ClCompile Include="SKill\UPlayerAttackSkill.cpp" />
+    <ClCompile Include="SKill\UPlayerStrikeSkill.cpp" />
+    <ClCompile Include="SKill\UMonsterAttackSkill.cpp" />
+    <ClCompile Include="SKill\UMonsterDrainSkill.cpp" />
+    <ClCompile Include="SKill\UPlayerHealing.cpp" />
+    <ClCompile Include="SKill\UMonsterDempseyRollSkill.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BattleManager.h" />
+    <ClInclude Include="Character\BattleManager.h" />
     <ClInclude Include="Character\Character.h" />
     <ClInclude Include="Character\Monster.h" />
     <ClInclude Include="Character\Player.h" />
+    <ClInclude Include="SKill\USkill.h" />
+    <ClInclude Include="SKill\UPlayerAttackSkill.h" />
+    <ClInclude Include="SKill\UPlayerStrikeSkill.h" />
+    <ClInclude Include="SKill\UMonsterAttackSkill.h" />
+    <ClInclude Include="SKill\UMonsterDrainSkill.h" />
+    <ClInclude Include="SKill\UPlayerHealing.h" />
+    <ClInclude Include="SKill\UMonsterDempseyRollSkill.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -64,7 +64,7 @@ public:
 	virtual void UseSkill(ACharacter* Target) = 0;
 	void PlayerTurn(ACharacter* Target);
 	void ShowStat();
-
+	int GetRandomInt();
 
 	const string& GetName() { return Name; }
 	int GetHp() { return Stat.Hp; }
@@ -78,6 +78,6 @@ public:
 	int GetMaxHp() const { return Stat.MaxHp; }
 	int GetMaxMp() const { return Stat.MaxMp; }
 protected:
-	int GetRandomInt();
+	
 
 };

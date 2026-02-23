@@ -47,10 +47,6 @@ FDamageResult APlayer::Attack(ACharacter* target)
 		DamageText = "헤드샷";
 	}
 
-	/*cout << Name << DamageText << "대미지 :  " << Result.FDamage << endl;
-	cout << Name << "가 " << set.FDamage << "의 피해를 입었습니다." << endl;
-	cout << target->GetName() << "의 HP:  " << target->GetHp()<< endl;
-	cout << target->GetName() << "의 MP:  " << target->GetMp()<< endl;*/
 
 	Result.PrintMessage(DamageText);
 	return Result;
