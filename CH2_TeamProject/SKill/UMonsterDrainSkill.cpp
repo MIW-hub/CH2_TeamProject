@@ -2,7 +2,7 @@
 #include "../Character/Character.h"
 #include <string>
 
-UMonsterDrainSkill::UMonsterDrainSkill(ACharacter* Owner) : USkill(Owner)
+UMonsterDrainSkill::UMonsterDrainSkill(ACharacter* Owner) : USkill(Owner,"흡혈",20)
 {
 }
 

@@ -4,14 +4,14 @@
 using namespace std;
 
 
-UMonsterAttackSkill::UMonsterAttackSkill(ACharacter* Owner) : USkill(Owner)
+UMonsterAttackSkill::UMonsterAttackSkill(ACharacter* Owner) : USkill(Owner,"공격",0)
 {
 }
 
 void UMonsterAttackSkill::Play(ACharacter* Target)
 {
 	int Damage = Owner->GetAtk();
-	bool BCritcal = Owner->GetRandomInt() <= Owner->GetCri();
+	bool BCritcal = Owner->GetRandomInt(100) <= Owner->GetCri();
 
 	if (BCritcal)
 	{

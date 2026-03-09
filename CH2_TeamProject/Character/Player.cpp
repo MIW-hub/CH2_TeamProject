@@ -1,6 +1,9 @@
 ﻿#include "Player.h"
 #include <iostream>
-
+#include "../SKill/UPlayerHealing.h"
+#include "../SKill/UPlayerStrikeSkill.h"
+#include "../SKill/UPlayerAttackSkill.h"
+#include "../Skill/USkill.h"
 
 using namespace std;
 
@@ -9,69 +12,43 @@ APlayer::APlayer(const string& NewName, FUnitStat& NewStat)
 {
 	Level = 1;
 	Exp = 0;
+	
+	Skills.push_back(make_unique<UPlayerAttackSkill>(this));
+	Skills.push_back(make_unique<UPlayerHealing>(this));
+	Skills.push_back(make_unique<UPlayerStrikeSkill>(this));
+	
 }
 
-//void APlayer::LogStatus(ACharacter* player)
-//{
-//	cout << " 이름 : " << player->GetName()
-//		<< " 레벨 : " << Level
-//		<< " 경험치 : " << Exp
-//		<< " 공격력 : " << player->GetAtk()
-//		<< " 방어력 : " << player->GetDef()
-//		<< " 치명타 : " << player->GetCri()
-//		<< "% " << endl;
-//}
+APlayer::~APlayer()
+{
+}
+
 
 void APlayer::LevelUp()
 {
-	//나중에 여기서 쓰다가 -> 다른데서도 쓸일이 있으면
-	// APlayer 헤더나 다른 헤더파일로 옮김.
 	constexpr int MAX_LEVEL = 10;
-
-
 }
 
 void APlayer::UseItem()
 {
 }
 
-FDamageResult APlayer::Attack(ACharacter* target)
+void APlayer::PlayTurn(ACharacter* Target)
 {
-	
-	FDamageResult Result = ACharacter::Attack(target);
-
-	DamageText = "가 공격합니다!";
-	if (Result.BCritcal)
+	ACharacter::PlayTurn(Target);
+	for (int i = 0; i < Skills.size(); i++)
 	{
-		
-		DamageText = "헤드샷";
+		cout << i + 1 << ". " << Skills[i]->GetSkillName() << endl;
 	}
-
-
-	Result.PrintMessage(DamageText);
-	return Result;
-}
-void APlayer::UseSkill(ACharacter* Target)
-{
-	if (Stat.Mp < 10) {
-		cout << "MP가 부족합니다." << endl;
-		return;
+	int choice = 0;
+	while (choice < 1 || choice > Skills.size())
+	{
+		cout << "스킬을 선택하세요: ";
+		cin >> choice;
+		if (choice < 1 || choice > Skills.size())
+		{
+			cout << "잘못된 입력입니다." << endl;
+		}
 	}
-
-
-	Stat.Mp -= 10;
-	int Damage = Stat.Atk * 2.0f;
-	int FinalDamage = Target->TakeDamage(Damage);
-	
-	/*cout << Name << "의 MP:  " << Stat.Mp << endl;*/
-	DamageText= "뚝베기 사냥 !";
-	FDamageResult Result;
-
-	Result.FDamage = FinalDamage;
-	Result.Attacker = this;
-	Result.Target = Target;
-	Result.BCritcal = false;
-
-
-	Result.PrintMessage(DamageText);
+	Skills[choice - 1]->Play(Target);
 }

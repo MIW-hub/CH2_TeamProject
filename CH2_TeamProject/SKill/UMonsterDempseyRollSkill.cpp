@@ -4,7 +4,7 @@
 #include <string>
 
 using namespace std;
-UMonsterDempseyRollSkill::UMonsterDempseyRollSkill(ACharacter* Owner) : USkill(Owner)
+UMonsterDempseyRollSkill::UMonsterDempseyRollSkill(ACharacter* Owner) : USkill(Owner, "연속공격", 20 )
 {
 }
 
@@ -13,7 +13,7 @@ void UMonsterDempseyRollSkill::Play(ACharacter* Target)
 	int Damage = Owner->GetAtk();
 	int FinalDamage = Target->TakeDamage(Damage);
 	int DempseyRoll = 0;
-	while (Owner->GetRandomInt() > 30 || DempseyRoll == 5)
+	while (Owner->GetRandomInt(100) > 30 || DempseyRoll == 5)
 	{
 		Damage *= Owner->GetAtk();
 		DempseyRoll++;

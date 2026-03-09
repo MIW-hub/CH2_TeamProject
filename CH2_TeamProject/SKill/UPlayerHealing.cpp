@@ -4,7 +4,7 @@
 
 using namespace std;
 
-UPlayerHealing::UPlayerHealing(ACharacter* Owner) : USkill(Owner)
+UPlayerHealing::UPlayerHealing(ACharacter* Owner) : USkill(Owner,"힐링",20)
 {
 }
 

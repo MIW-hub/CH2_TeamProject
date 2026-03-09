@@ -3,7 +3,7 @@
 #include "iostream"
 
 
-UPlayerStrikeSkill::UPlayerStrikeSkill(ACharacter* Owner) : USkill(Owner)
+UPlayerStrikeSkill::UPlayerStrikeSkill(ACharacter* Owner) : USkill(Owner,"뚝베기 사냥 !",20)
 {
 
 }

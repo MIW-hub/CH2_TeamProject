@@ -1,6 +1,4 @@
 ﻿#include "Character.h"
-#include "../SKill/UPlayerAttackSkill.h"
-#include "../SKill/UMonsterAttackSkill.h"
 #include <iostream>
 #include <random>
 
@@ -13,44 +11,45 @@ ACharacter::ACharacter(const string& NewName, const FUnitStat& NewStat)
 	Stat = NewStat;
 	Stat.Hp = Stat.MaxHp;
 	Stat.Mp = Stat.MaxMp;
-
+	
 }
 
 ACharacter::~ACharacter()
 {
 	cout << Name << " 소멸됨" << endl;
+
 }
 
-int ACharacter::GetRandomInt()
+int ACharacter::GetRandomInt(int Max)
 {
-	static random_device rd;
-	static mt19937 gen(rd());
-	std::uniform_int_distribution<int> dis(0, 100);
+	static std::random_device rd;
+	static std::mt19937 gen(rd());
+	std::uniform_int_distribution<int> dis(0, Max - 1);
 	return dis(gen);
 }
 
-FDamageResult ACharacter::Attack(ACharacter* Target)
-{
-
-	int Damage = Stat.Atk;
-	bool BCritcal = GetRandomInt() <= Stat.Critical;
-
-	if (BCritcal)
-	{
-		Damage = static_cast<int>(Damage * 1.5f);
-	}
-
-	int FinalDamage = Target->TakeDamage(Damage);
-	
-	FDamageResult Result;
-
-	Result.FDamage = FinalDamage;
-	Result.Attacker = this;
-	Result.Target = Target;
-	Result.BCritcal = BCritcal;
-
-	return Result;
-}
+// FDamageResult ACharacter::Attack(ACharacter* Target)
+// {
+//
+// 	int Damage = Stat.Atk;
+// 	bool BCritcal = GetRandomInt(100) <= Stat.Critical;
+//
+// 	if (BCritcal)
+// 	{
+// 		Damage = static_cast<int>(Damage * 1.5f);
+// 	}
+//
+// 	int FinalDamage = Target->TakeDamage(Damage);
+// 	
+// 	FDamageResult Result;
+//
+// 	Result.FDamage = FinalDamage;
+// 	Result.Attacker = this;
+// 	Result.Target = Target;
+// 	Result.BCritcal = BCritcal;
+//
+// 	return Result;
+// }
 
 int ACharacter::TakeDamage(int DamageAmount)
 {
@@ -66,14 +65,9 @@ int ACharacter::TakeDamage(int DamageAmount)
 }
 
 
-void ACharacter::PlayerTurn(ACharacter* Target)
+void ACharacter::PlayTurn(ACharacter* Target)
 {
-	if (GetRandomInt() < 50) {
-		Attack(Target);
-	}
-	else {
-		UseSkill(Target);
-	}
+	
 }
 
 void ACharacter::ShowStat()

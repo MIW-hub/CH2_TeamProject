@@ -1,6 +1,9 @@
 ﻿#pragma once
 
 #include <string>
+#include <vector>
+#include <memory>
+#include "../Skill/USkill.h"
 
 using namespace std;
 
@@ -47,11 +50,13 @@ class ACharacter
 public:
     ACharacter(const string& NewName, const FUnitStat& NewStat);
     virtual ~ACharacter();
+	
+	
    
 protected:
     string Name;  
     FUnitStat Stat;	
-
+	vector<unique_ptr <USkill>> Skills;
 	
 	
 private:
@@ -59,12 +64,10 @@ private:
 
 public:
 	string DamageText;
-	virtual FDamageResult Attack(ACharacter* Target);
 	virtual int TakeDamage(int DamageAmount);
-	virtual void UseSkill(ACharacter* Target) = 0;
-	void PlayerTurn(ACharacter* Target);
+	virtual void PlayTurn(ACharacter* Target) = 0;
 	void ShowStat();
-	int GetRandomInt();
+	int GetRandomInt(int max = 100);
 
 	const string& GetName() { return Name; }
 	int GetHp() { return Stat.Hp; }

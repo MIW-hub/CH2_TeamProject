@@ -33,7 +33,7 @@ void BattleManager::WaitForPlayerInput()
 bool BattleManager::BattleTurn(ACharacter* Attacker, ACharacter* Defender)
 {
 	WaitForPlayerInput();
-	Attacker->PlayerTurn(Defender);
+	Attacker->PlayTurn(Defender);
 	Attacker->ShowStat();
 	Defender->ShowStat();
 	cout << "" << endl;

@@ -3,7 +3,7 @@
 
 using namespace std;
 
-UPlayerAttackSkill::UPlayerAttackSkill(ACharacter* Owner) : USkill(Owner)
+UPlayerAttackSkill::UPlayerAttackSkill(ACharacter* Owner) : USkill(Owner,"공격",0)
 {
 
 }
@@ -11,7 +11,7 @@ UPlayerAttackSkill::UPlayerAttackSkill(ACharacter* Owner) : USkill(Owner)
 void UPlayerAttackSkill::Play(ACharacter* Target)
 {
 	int Damage = Owner->GetAtk();
-	bool BCritcal = Owner->GetRandomInt() <= Owner->GetCri();
+	bool BCritcal = Owner->GetRandomInt(100) <= Owner->GetCri();
 
 	if (BCritcal)
 	{

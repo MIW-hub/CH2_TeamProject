@@ -3,6 +3,7 @@
 
 class UPlayerStrikeSkill : public USkill
 {
+public:
 	UPlayerStrikeSkill(ACharacter* Owner);
 
 	void Play(ACharacter* Target) override;

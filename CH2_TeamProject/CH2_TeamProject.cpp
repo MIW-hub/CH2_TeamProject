@@ -16,10 +16,9 @@ using namespace std;
 
 int main()
 {
-    FUnitStat PlayerStat = { 120,50,16,5,40 };
-    FUnitStat MonsterStat = { 100 ,0, 16, 2, 40 };
-   
-
+    FUnitStat PlayerStat = { 120,100,16,5,40 };
+    FUnitStat MonsterStat = { 100 ,100, 16, 2, 40 };
+    
     unique_ptr<ACharacter> Player = make_unique<APlayer>("나의 용사", PlayerStat);
     unique_ptr<ACharacter> Monster = make_unique<AMonster>("무서운 오크", MonsterStat);
     
